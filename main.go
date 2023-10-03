@@ -31,4 +31,14 @@ func main() {
 
 	db.Model(&pessoa).Update("Nome", "Senna")
 
+	//var pessoaFilter model.Pessoa
+	var pessoas = []model.Pessoa{}
+	db.Find(&pessoas).Rows()
+
+	for _, p := range pessoas {
+		fmt.Println(
+			fmt.Sprintf("%d nome -> %s, criado na data: %s", p.ID, p.Nome, p.CreatedAt))
+
+	}
+
 }
